@@ -3,37 +3,48 @@
 # control along with your flow code.
 
 # Generic metadata about this project
-name: prefect-mlops-zoomcamp
+name: Prefect-mlops
 prefect-version: 2.16.4
 
 # build section allows you to manage and build docker images
-build: null
+build:
 
 # push section allows you to manage if and how this project is uploaded to remote locations
-push: null
+push:
 
 # pull section allows you to provide instructions for cloning this project in remote locations
 pull:
-- prefect.deployments.steps.set_working_directory:
-    directory: /Users/macbook/Documents/Personal_projects/prefect-mlops-zoomcamp
+- prefect.deployments.steps.git_clone:
+    repository: https://github.com/seunboy1/Prefect-mlops.git
+    branch: main
 
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
 - name: mlops-zoomcamp
-  version: null
+  version:
   tags: []
   description: The main training pipeline
   entrypoint: 3.4/orchestrate.py:main_flow
   parameters: {}
   work_pool:
     name: zoompool
-    work_queue_name: null
+    work_queue_name:
+    job_variables: {}
+  schedules: []
+- name: mlops-zoomcamp
+  version:
+  tags: []
+  description: The main training pipeline
+  entrypoint: 3.4/cat_facts.py:fetch
+  parameters: {}
+  work_pool:
+    name: zoompool
+    work_queue_name:
     job_variables: {}
   schedules: []
 
 
-
 # prefect project init
-# prefect deploy 3.4/orchestrate.py:main_flow -n mlops-zoomcamp -p zoompool
+# prefect deploy 3.4/orchestrate.py:main_flow -n mlops-zoomcamp -p zoompool 
 # prefect worker start --pool 'zoompool'
 # prefect deployment run 'main-flow/mlops-zoomcamp'
