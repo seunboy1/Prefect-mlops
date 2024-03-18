@@ -20,7 +20,7 @@ def animal_facts():
     current_working_directory = os.getcwd()
     print(current_working_directory)
 
-    l_files = os.listdir(path)
+    l_files = os.listdir(current_working_directory)
     print("Printintg content of current directory")
     # Iterating over all the files
     for file in l_files:
