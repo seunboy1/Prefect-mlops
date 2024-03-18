@@ -53,6 +53,17 @@ deployments:
     work_queue_name:
     job_variables: {}
   schedules: []
+- name: orchestrate-with-s3
+  version:
+  tags: []
+  description: The main training pipeline
+  entrypoint: 3.4/orchestrate_s3.py:main_flow_s3
+  parameters: {}
+  work_pool:
+    name: zoompool
+    work_queue_name:
+    job_variables: {}
+  schedules: []
 
 
 # prefect project init
