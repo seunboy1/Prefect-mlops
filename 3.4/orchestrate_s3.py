@@ -142,16 +142,16 @@ def main_flow_s3(
     mlflow.set_tracking_uri("sqlite:///mlflow.db")
     mlflow.set_experiment("nyc-taxi-experiment")
 
-    # Load
-    s3_bucket_block = S3Bucket.load("s3-bucket-example")
-    s3_bucket_block.download_folder_to_path(from_folder="data", to_folder="3.4/data")
+    # # Load
+    # s3_bucket_block = S3Bucket.load("s3-bucket-example")
+    # s3_bucket_block.download_folder_to_path(from_folder="data", to_folder="3.4/data")
 
-    current_working_directory = os.getcwd()
-    list_dir = os.listdir(current_working_directory)
-    print(current_working_directory)
-    for i in list_dir:
-        print(i)
-    print(current_working_directory)
+    # current_working_directory = os.getcwd()
+    # list_dir = os.listdir(current_working_directory)
+    # print(current_working_directory)
+    # for i in list_dir:
+    #     print(i)
+    # print(current_working_directory)
 
     df_train = read_data(train_path)
     df_val = read_data(val_path)
