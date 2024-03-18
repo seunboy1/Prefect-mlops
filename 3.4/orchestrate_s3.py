@@ -148,8 +148,10 @@ def main_flow_s3(
 
     current_working_directory = os.getcwd()
     list_dir = os.listdir(current_working_directory)
+    print(current_working_directory)
     for i in list_dir:
         print(i)
+    print(current_working_directory)
 
     df_train = read_data(train_path)
     df_val = read_data(val_path)
