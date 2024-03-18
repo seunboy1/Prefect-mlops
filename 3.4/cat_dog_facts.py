@@ -1,3 +1,4 @@
+import os
 import httpx
 from prefect import flow
 
@@ -16,6 +17,12 @@ def fetch_dog_fact():
 
 @flow(log_prints=True)
 def animal_facts():
+    # get the current working directory
+    current_working_directory = os.getcwd()
+
+    # print output to the console
+    print(current_working_directory)
+
     cat_fact = fetch_cat_fact()
     dog_fact = fetch_dog_fact()
     print(f"🐱: {cat_fact} \n🐶: {dog_fact}")

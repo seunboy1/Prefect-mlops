@@ -42,6 +42,17 @@ deployments:
     work_queue_name:
     job_variables: {}
   schedules: []
+- name: cat-dog-facts
+  version:
+  tags: []
+  description:
+  entrypoint: 3.4/cat_dog_facts.py:animal_facts
+  parameters: {}
+  work_pool:
+    name: zoompool
+    work_queue_name:
+    job_variables: {}
+  schedules: []
 
 
 # prefect project init
