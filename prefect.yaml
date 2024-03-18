@@ -24,7 +24,7 @@ deployments:
   version:
   tags: []
   description: The main training pipeline
-  entrypoint: 3.4/orchestrate.py:main_flow
+  entrypoint: src/orchestrate.py:main_flow
   parameters: {}
   work_pool:
     name: zoompool
@@ -35,7 +35,7 @@ deployments:
   version:
   tags: []
   description: The main training pipeline
-  entrypoint: 3.4/cat_facts.py:fetch
+  entrypoint: src/cat_facts.py:fetch
   parameters: {}
   work_pool:
     name: zoompool
@@ -46,7 +46,7 @@ deployments:
   version:
   tags: []
   description:
-  entrypoint: 3.4/cat_dog_facts.py:animal_facts
+  entrypoint: src/cat_dog_facts.py:animal_facts
   parameters: {}
   work_pool:
     name: zoompool
@@ -57,7 +57,7 @@ deployments:
   version:
   tags: []
   description: The main training pipeline
-  entrypoint: 3.4/orchestrate_s3.py:main_flow_s3
+  entrypoint: src/orchestrate_s3.py:main_flow_s3
   parameters: {}
   work_pool:
     name: zoompool
@@ -67,6 +67,6 @@ deployments:
 
 
 # prefect project init
-# prefect deploy 3.4/orchestrate.py:main_flow -n mlops-zoomcamp -p zoompool 
+# prefect deploy src/orchestrate.py:main_flow -n mlops-zoomcamp -p zoompool 
 # prefect worker start --pool 'zoompool'
 # prefect deployment run 'main-flow/mlops-zoomcamp'
