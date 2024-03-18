@@ -146,7 +146,8 @@ def main_flow_s3(
     s3_bucket_block = S3Bucket.load("s3-bucket-example")
     s3_bucket_block.download_folder_to_path(from_folder="data", to_folder="3.4/data")
 
-    list_dir = os.list_dir()
+    current_working_directory = os.getcwd()
+    list_dir = os.list_dir(current_working_directory)
     for i in list_dir:
         print(i)
 
