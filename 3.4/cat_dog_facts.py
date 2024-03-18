@@ -17,11 +17,15 @@ def fetch_dog_fact():
 
 @flow(log_prints=True)
 def animal_facts():
-    # get the current working directory
     current_working_directory = os.getcwd()
-
-    # print output to the console
     print(current_working_directory)
+
+    l_files = os.listdir(path)
+    print("Printintg content of current directory")
+    # Iterating over all the files
+    for file in l_files:
+        print (file)
+ 
 
     cat_fact = fetch_cat_fact()
     dog_fact = fetch_dog_fact()
