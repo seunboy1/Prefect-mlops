@@ -164,4 +164,7 @@ def main_flow_s3(
 
 
 if __name__ == "__main__":
+    current_working_directory = os.getcwd()
+    list_dir = os.listdir(current_working_directory)
+    print(current_working_directory)
     main_flow_s3()
