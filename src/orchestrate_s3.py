@@ -134,7 +134,7 @@ def train_best_model(
 @flow
 def main_flow_s3(
     train_path: str = "./src/data/green_tripdata_2021-01.parquet",
-    val_path: str = "./srcdata/green_tripdata_2021-02.parquet",
+    val_path: str = "./src/data/green_tripdata_2021-02.parquet",
 ) -> None:
     """The main training pipeline"""
 
