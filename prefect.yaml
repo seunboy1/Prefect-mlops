@@ -53,7 +53,7 @@ deployments:
     work_queue_name:
     job_variables: {}
   schedules: []
-- name: orchestrate-with-s3
+- name: main-flow-s3
   version:
   tags: []
   description: The main training pipeline
