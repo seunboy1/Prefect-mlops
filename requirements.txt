@@ -6,3 +6,4 @@ prefect-github==0.2.2
 xgboost==2.0.3
 orjson==3.9.15
 pydantic==2.6.4
+faker==24.3.0
