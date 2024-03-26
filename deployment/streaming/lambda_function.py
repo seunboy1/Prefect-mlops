@@ -3,12 +3,17 @@ import json
 import boto3
 import base64
 
-kinesis_client = boto3.client('kinesis')
 
 TEST_RUN = os.getenv('TEST_RUN', 'False') == 'True'
 PREDICTIONS_STREAM_NAME = os.getenv('PREDICTIONS_STREAM_NAME', 'ride_predictions')
-# PREDICTIONS_STREAM_NAME = 'ride_predictions'
-# TEST_RUN = 'True'
+
+aws_access_key_id = os.getenv('AWS_ACCESS')
+aws_secret_access_key = os.environ.get('AWS_SECRET')
+kinesis_client = boto3.client('kinesis',
+                              region_name='us-east-1',
+                              aws_access_key_id=aws_access_key_id,
+                              aws_secret_access_key=aws_secret_access_key
+                              )
 
 def lambda_handler(event, context):
     
