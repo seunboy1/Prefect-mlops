@@ -157,11 +157,7 @@ $(aws ecr get-login --no-include-email)
 Pushing 
 
 ```bash
-REMOTE_URI="387546586013.dkr.ecr.eu-west-1.amazonaws.com/duration-model"
-REMOTE_TAG="v1"
-REMOTE_IMAGE=${REMOTE_URI}:${REMOTE_TAG}
-
-LOCAL_IMAGE="stream-model-duration:v1"
-docker tag ${LOCAL_IMAGE} ${REMOTE_IMAGE}
-docker push ${REMOTE_IMAGE}
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 814698481162.dkr.ecr.us-east-1.amazonaws.com
+docker tag stream-model-duration:v1 814698481162.dkr.ecr.us-east-1.amazonaws.com/duration-model:latest
+docker push 814698481162.dkr.ecr.us-east-1.amazonaws.com/duration-model:latest
 ```
