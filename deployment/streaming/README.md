@@ -84,8 +84,9 @@ echo ${RESULT} | jq -r '.Records[0].Data' | base64 --decode
 
 ```bash
 export PREDICTIONS_STREAM_NAME="ride_predictions"
-export AWS_ACCESS_KEY_ID="xxxxxxxxxxxxxx"
-export AWS_SECRET_ACCESS_KEY="xxxxxx"
+export AWS_ACCESS_KEY_ID=xxxxxxxxxxxxxx
+export AWS_SECRET_ACCESS_KEY=xxxxxx
+export AWS_DEFAULT_REGION=us-east-1
 export TEST_RUN="True"
 
 python test.py
@@ -115,14 +116,15 @@ URL for testing:
 To use AWS CLI, you may need to set the env variables:
 
 ```bash
-docker run -it --rm \
+
+    docker run -it --rm \
     -p 8080:8080 \
-    -e PREDICTIONS_STREAM_NAME="ride_predictions" \
-    -e RUN_ID="e1efc53e9bd149078b0c12aeaa6365df" \
-    -e TEST_RUN="True" \
+    -e AWS_ACCESS_KEY_ID=AKIA33L6QIYFJDYRZAEO \
     -e AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}" \
     -e AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY}" \
     -e AWS_DEFAULT_REGION="${AWS_DEFAULT_REGION}" \
+    -e PREDICTIONS_STREAM_NAME="ride_predictions" \
+    -e TEST_RUN="True" \
     stream-model-duration:v1
 ```
 
