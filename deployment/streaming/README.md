@@ -27,12 +27,10 @@ aws kinesis put-record \
     --stream-name ${KINESIS_STREAM_INPUT} \
     --partition-key 1 \
     --data '{
-        "ride": {
-            "PULocationID": 130,
-            "DOLocationID": 205,
-            "trip_distance": 3.66
-        }, 
-        "ride_id": 156
+      "name": "Russell Jimenez",
+      "city": "Jenniferton",
+      "phone": "(377)489-0032x64590",
+      "id": "2bf54686-b801-49d7-9194-9770b7aff96c"
     }'
 ```
 
@@ -41,24 +39,24 @@ aws kinesis put-record \
 
 ```json
 {
-    "Records": [
-        {
-            "kinesis": {
-                "kinesisSchemaVersion": "1.0",
-                "partitionKey": "1",
-                "sequenceNumber": "49630081666084879290581185630324770398608704880802529282",
-                "data": "ewogICAgICAgICJyaWRlIjogewogICAgICAgICAgICAiUFVMb2NhdGlvbklEIjogMTMwLAogICAgICAgICAgICAiRE9Mb2NhdGlvbklEIjogMjA1LAogICAgICAgICAgICAidHJpcF9kaXN0YW5jZSI6IDMuNjYKICAgICAgICB9LCAKICAgICAgICAicmlkZV9pZCI6IDI1NgogICAgfQ==",
-                "approximateArrivalTimestamp": 1654161514.132
-            },
-            "eventSource": "aws:kinesis",
-            "eventVersion": "1.0",
-            "eventID": "shardId-000000000000:49630081666084879290581185630324770398608704880802529282",
-            "eventName": "aws:kinesis:record",
-            "invokeIdentityArn": "arn:aws:iam::XXXXXXXXX:role/lambda-kinesis-role",
-            "awsRegion": "eu-west-1",
-            "eventSourceARN": "arn:aws:kinesis:eu-west-1:XXXXXXXXX:stream/ride_events"
-        }
-    ]
+  "Records": [
+    {
+      "kinesis": {
+        "kinesisSchemaVersion": "1.0",
+        "partitionKey": "name",
+        "sequenceNumber": "49650427908365418315833497733053628226006584739925852194",
+        "data": "eyJuYW1lIjogIlJ1c3NlbGwgSmltZW5leiIsICJjaXR5IjogIkplbm5pZmVydG9uIiwgInBob25lIjogIigzNzcpNDg5LTAwMzJ4NjQ1OTAiLCAiaWQiOiAiMmJmNTQ2ODYtYjgwMS00OWQ3LTkxOTQtOTc3MGI3YWZmOTZjIn0=",
+        "approximateArrivalTimestamp": 1711186903.319
+      },
+      "eventSource": "aws:kinesis",
+      "eventVersion": "1.0",
+      "eventID": "shardId-000000000002:49650427908365418315833497733053628226006584739925852194",
+      "eventName": "aws:kinesis:record",
+      "invokeIdentityArn": "arn:aws:iam::814698481162:role/Lamda-kinesis-role",
+      "awsRegion": "us-east-1",
+      "eventSourceARN": "arn:aws:kinesis:us-east-1:814698481162:stream/youtube-streams"
+    }
+  ]
 }
 ```
 
@@ -86,7 +84,8 @@ echo ${RESULT} | jq -r '.Records[0].Data' | base64 --decode
 
 ```bash
 export PREDICTIONS_STREAM_NAME="ride_predictions"
-export RUN_ID="e1efc53e9bd149078b0c12aeaa6365df"
+export AWS_ACCESS_KEY_ID="xxxxxxxxxxxxxx"
+export AWS_SECRET_ACCESS_KEY="xxxxxx"
 export TEST_RUN="True"
 
 python test.py
