@@ -8,34 +8,9 @@
 
 ## Code snippets
 
-### Sending data
 
-
-```bash
-KINESIS_STREAM_INPUT=ride_events
-aws kinesis put-record \
-    --stream-name ${KINESIS_STREAM_INPUT} \
-    --partition-key 1 \
-    --data "Hello, this is a test."
-```
-
-
-Sending this record
-
-```bash
-aws kinesis put-record \
-    --stream-name ${KINESIS_STREAM_INPUT} \
-    --partition-key 1 \
-    --data '{
-      "name": "Russell Jimenez",
-      "city": "Jenniferton",
-      "phone": "(377)489-0032x64590",
-      "id": "2bf54686-b801-49d7-9194-9770b7aff96c"
-    }'
-```
-
+## Create a Lambda function, test it
 ### Test event
-
 
 ```json
 {
@@ -58,6 +33,20 @@ aws kinesis put-record \
     }
   ]
 }
+```
+
+### Sending this record
+
+```bash
+aws kinesis put-record \
+    --stream-name ${KINESIS_STREAM_INPUT} \
+    --partition-key 1 \
+    --data '{
+      "name": "Russell Jimenez",
+      "city": "Jenniferton",
+      "phone": "(377)489-0032x64590",
+      "id": "2bf54686-b801-49d7-9194-9770b7aff96c"
+    }'
 ```
 
 ### Reading from the stream
@@ -99,10 +88,12 @@ docker build -t stream-model-duration:v1 .
 
 docker run -it --rm \
     -p 8080:8080 \
+    -e AWS_ACCESS_KEY_ID=AKIA33L6QIYFJDYRZAEO \
+    -e AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}" \
+    -e AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY}" \
+    -e AWS_DEFAULT_REGION="${AWS_DEFAULT_REGION}" \
     -e PREDICTIONS_STREAM_NAME="ride_predictions" \
-    -e RUN_ID="e1efc53e9bd149078b0c12aeaa6365df" \
     -e TEST_RUN="True" \
-    -e AWS_DEFAULT_REGION="eu-west-1" \
     stream-model-duration:v1
 ```
 
@@ -131,12 +122,17 @@ To use AWS CLI, you may need to set the env variables:
 Alternatively, you can mount the `.aws` folder with your credentials to the `.aws` folder in the container:
 
 ```bash
-docker run -it --rm \
+
+    docker run -it --rm \
     -p 8080:8080 \
+    -e AWS_ACCESS_KEY_ID=AKIA33L6QIYFJDYRZAEO \
+    -e AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}" \
+    -e AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY}" \
+    -e AWS_DEFAULT_REGION="${AWS_DEFAULT_REGION}" \
     -e PREDICTIONS_STREAM_NAME="ride_predictions" \
-    -e RUN_ID="e1efc53e9bd149078b0c12aeaa6365df" \
     -e TEST_RUN="True" \
-    -v c:/Users/alexe/.aws:/root/.aws \
+    -e RUN_ID="e1efc53e9bd149078b0c12aeaa6365df" \
+    -v /Users/macbook/.aws :/root/.aws \
     stream-model-duration:v1
 ```
 
