@@ -61,7 +61,7 @@ deployments:
   parameters: {}
   work_pool:
     name: zoompool
-    work_queue_name:
+    work_queue_name :
     job_variables: {}
   schedules: []
 
