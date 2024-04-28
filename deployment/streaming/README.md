@@ -88,7 +88,6 @@ docker build -t stream-model-duration:v1 .
 
 docker run -it --rm \
     -p 8080:8080 \
-    -e AWS_ACCESS_KEY_ID=AKIA33L6QIYFJDYRZAEO \
     -e AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}" \
     -e AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY}" \
     -e AWS_DEFAULT_REGION="${AWS_DEFAULT_REGION}" \
@@ -110,7 +109,6 @@ To use AWS CLI, you may need to set the env variables:
 
     docker run -it --rm \
     -p 8080:8080 \
-    -e AWS_ACCESS_KEY_ID=AKIA33L6QIYFJDYRZAEO \
     -e AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}" \
     -e AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY}" \
     -e AWS_DEFAULT_REGION="${AWS_DEFAULT_REGION}" \
@@ -125,7 +123,6 @@ Alternatively, you can mount the `.aws` folder with your credentials to the `.aw
 
     docker run -it --rm \
     -p 8080:8080 \
-    -e AWS_ACCESS_KEY_ID=AKIA33L6QIYFJDYRZAEO \
     -e AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}" \
     -e AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY}" \
     -e AWS_DEFAULT_REGION="${AWS_DEFAULT_REGION}" \
