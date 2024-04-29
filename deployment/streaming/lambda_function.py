@@ -14,6 +14,11 @@ kinesis_client = boto3.client('kinesis',
                               aws_access_key_id=aws_access_key_id,
                               aws_secret_access_key=aws_secret_access_key
                               )
+def base64_decode(encoded_data):
+    payload = base64.b64decode(encoded_data)
+    event_data = json.loads(payload)
+
+    return event_data
 
 def test(ride):
     features = {}
@@ -26,8 +31,7 @@ def lambda_handler(event, context):
     
     predictions =[]
     for record in event['Records']:
-        payload = base64.b64decode(record['kinesis']['data'])
-        event_data = json.loads(payload)
+        event_data = base64_decode(record['kinesis']['data'])
         # print("event_data", event_data, type(event_data))
         name = event_data["name"]
         city = event_data["city"]
