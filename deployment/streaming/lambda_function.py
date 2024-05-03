@@ -24,7 +24,6 @@ def test(ride):
     features = {}
     features['PU_DO'] = '%s_%s' % (ride['PULocationID'], ride['DOLocationID'])
     features['trip_distance'] = ride['trip_distance']
-
     return features
 
 def lambda_handler(event, context):
