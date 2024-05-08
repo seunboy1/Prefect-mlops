@@ -19,6 +19,8 @@ sleep 3
 
 cd ../../
 
+# black .
+pylint --recursive=y . 
 pytest -v 
 
 cd deployment/streaming/
