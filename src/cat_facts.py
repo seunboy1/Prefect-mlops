@@ -4,8 +4,9 @@ from prefect import flow, task
 
 @task(retries=4, retry_delay_seconds=0.1, log_prints=True)
 def fetch_cat_fact():
+    # pylint: disable=broad-exception-raised
     cat_fact = httpx.get("https://f3-vyx5c2hfpq-ue.a.run.app/")
-    #An endpoint that is designed to fail sporadically
+    # An endpoint that is designed to fail sporadically
     if cat_fact.status_code >= 400:
         raise Exception()
     print(cat_fact.text)

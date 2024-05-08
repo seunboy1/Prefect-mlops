@@ -1,0 +1,17 @@
+[tool.pylint.messages_control]
+disable= [
+        "missing-function-docstring",
+        "missing-class-docstring",
+        "invalid-name",
+        "protected-access",
+        "duplicate-code",
+        "missing-module-docstring",
+        "redefined-outer-name"
+]
+
+[tool.pylint.MASTER]
+ignore-paths = '^Monitoring/.ipynb_checkpoints/.*$'
+
+[tool.black]
+line-length = 83
+target-version = ["py38", "py39", "py310", "py311"]

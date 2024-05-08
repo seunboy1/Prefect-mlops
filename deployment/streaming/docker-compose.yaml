@@ -1,0 +1,11 @@
+services:
+  backend:
+    image: stream-model-duration:v1
+    ports:
+      - "8080:8080"
+    environment:
+      - TEST_RUN=True
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+      - PREDICTIONS_STREAM_NAME=ride_predictions
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}

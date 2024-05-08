@@ -32,9 +32,7 @@ def read_data(filename: str) -> pd.DataFrame:
 
 
 @task
-def add_features(
-    df_train: pd.DataFrame, df_val: pd.DataFrame
-) -> tuple(
+def add_features(df_train: pd.DataFrame, df_val: pd.DataFrame) -> tuple(
     [
         scipy.sparse._csr.csr_matrix,
         scipy.sparse._csr.csr_matrix,
@@ -107,7 +105,6 @@ def train_best_model(
         mlflow.log_artifact("models/preprocessor.b", artifact_path="preprocessor")
 
         mlflow.xgboost.log_model(booster, artifact_path="models_mlflow")
-    return None
 
 
 @flow
@@ -120,7 +117,6 @@ def main_flow(
     current_working_directory = os.getcwd()
     train_path = current_working_directory + train_path
     val_path = current_working_directory + val_path
-
 
     # MLflow settings
     mlflow.set_tracking_uri("sqlite:///mlflow.db")
