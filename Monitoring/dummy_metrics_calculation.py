@@ -1,9 +1,10 @@
 # pylint: disable=not-context-manager
-import datetime
 import time
+import uuid
 import random
 import logging
-import uuid
+import datetime
+
 import pytz
 import psycopg
 

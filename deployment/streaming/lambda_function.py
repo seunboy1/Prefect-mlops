@@ -4,8 +4,9 @@ import base64
 
 import boto3
 
-
 TEST_RUN = os.getenv("TEST_RUN", "False") == "True"
+LAMBDA_TEST = True
+
 PREDICTIONS_STREAM_NAME = os.getenv("PREDICTIONS_STREAM_NAME", "ride_predictions")
 
 aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID")

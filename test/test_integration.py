@@ -4,6 +4,8 @@ from pathlib import Path
 import pytest
 import requests
 
+from deployment.streaming.lambda_function import lambda_handler
+
 
 def read_json(file):
     test_path = Path(__file__).parent
@@ -50,3 +52,6 @@ def test_docker_lambda(global_variables):
     response = docker_lamda_call(url, event)
     assert response.status_code == 200
     assert response.json() == expected_response
+
+    response_func = lambda_handler(event, "context")
+    assert response_func == expected_response

@@ -1,21 +1,22 @@
 # pylint: disable=not-context-manager, line-too-long
-import datetime
 import time
 import random
 import logging
+import datetime
+
+import joblib
 import pandas as pd
 import psycopg
-import joblib
-
-# from prefect import task, flow
-
-from evidently.report import Report
 from evidently import ColumnMapping
+from evidently.report import Report
 from evidently.metrics import (
     ColumnDriftMetric,
     DatasetDriftMetric,
     DatasetMissingValuesMetric,
 )
+
+# from prefect import task, flow
+
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s [%(levelname)s]: %(message)s"

@@ -2,9 +2,9 @@ import os
 import json
 import uuid
 from time import sleep
-from faker import Faker
 
 import boto3
+from faker import Faker
 
 MY_STREAM_NAME = "ride_events"
 

@@ -15,3 +15,15 @@ ignore-paths = '^Monitoring/.ipynb_checkpoints/.*$'
 [tool.black]
 line-length = 83
 target-version = ["py38", "py39", "py310", "py311"]
+
+[tool.coverage.run]
+branch = true
+source = ["deployment"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 80
+
+[tool.isort]
+multi_line_output = 3
+length_sort = true

@@ -2,11 +2,11 @@ import pickle
 import pathlib
 from typing import NamedTuple
 
+import numpy as np
 import scipy
 import mlflow
-import sklearn
-import numpy as np
 import pandas as pd
+import sklearn
 import xgboost as xgb
 from sklearn.metrics import mean_squared_error
 from sklearn.feature_extraction import DictVectorizer

@@ -3,18 +3,17 @@ import pickle
 import pathlib
 from datetime import date
 
+import numpy as np
 import scipy
 import mlflow
-import sklearn
-import numpy as np
 import pandas as pd
+import sklearn
 import xgboost as xgb
 from prefect import flow, task
 from prefect_aws import S3Bucket
 from sklearn.metrics import mean_squared_error
-from sklearn.feature_extraction import DictVectorizer
-
 from prefect.artifacts import create_markdown_artifact
+from sklearn.feature_extraction import DictVectorizer
 
 
 @task(retries=3, retry_delay_seconds=2)

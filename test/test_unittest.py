@@ -1,7 +1,8 @@
-from pathlib import Path
 import unittest  # The test framework
+from pathlib import Path
+
 from deployment.streaming import lambda_function
-from deployment.streaming.inc_dec import increment, decrement
+from deployment.streaming.inc_dec import decrement, increment
 
 
 class TestIncrementDecrement(unittest.TestCase):
