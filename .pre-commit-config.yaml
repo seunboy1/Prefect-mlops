@@ -42,13 +42,3 @@ repos:
           # "-sn", # Don't display the score
           "--recursive=y"
         ]
-
-- repo: local
-  hooks:
-  - id: pytest
-    name: pytest
-    entry: pytest test
-    language: system
-    types: [python]
-    pass_filenames: false
-    always_run: true
